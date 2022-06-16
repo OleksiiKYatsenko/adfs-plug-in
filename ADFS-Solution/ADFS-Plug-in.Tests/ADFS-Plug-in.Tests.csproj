@@ -10,7 +10,7 @@
 
     <SignAssembly>True</SignAssembly>
 
-    <AssemblyOriginatorKeyFile>C:\Projects\SecureAuth\HomeWork\ADFS-Solution\ADFS-Plug-in\adsfplugin.snk</AssemblyOriginatorKeyFile>
+    <AssemblyOriginatorKeyFile>adfsplugin.publicKey</AssemblyOriginatorKeyFile>
   </PropertyGroup>
 
   <ItemGroup>
