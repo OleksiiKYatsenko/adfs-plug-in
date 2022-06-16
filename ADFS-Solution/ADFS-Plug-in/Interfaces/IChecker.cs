@@ -2,6 +2,6 @@
 {
     internal interface IChecker
     {
-        Task<bool> CheckAsync();
+        string Check(string userName);
     }
 }

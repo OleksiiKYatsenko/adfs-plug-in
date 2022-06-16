@@ -11,10 +11,10 @@ namespace ADFS_Plug_in.Checkers
             _dummyServiceClient = dummyServiceClient;
         }
 
-        public async Task<bool> CheckAsync()
+        public string Check(string userName)
         {
-            var result = await _dummyServiceClient.GetServiceResponse();
-            return result;
+            var result = _dummyServiceClient.GetServiceResponse();
+            return result ? userName : string.Empty;
         }
     }
 }
