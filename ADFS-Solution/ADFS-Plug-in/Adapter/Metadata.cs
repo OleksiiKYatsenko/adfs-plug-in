@@ -5,7 +5,7 @@ namespace ADFS_Plug_in
 {
     internal class Metadata : IAuthenticationAdapterMetadata
     {
-        public string[] AuthenticationMethods => new[] { "http://example.com/myauthenticationmethod1", "http://example.com/myauthenticationmethod2" };
+        public string[] AuthenticationMethods => new[] { "https://dummyservice.com/check" };
 
         public string[] IdentityClaims => new[] { "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/upn" };
 

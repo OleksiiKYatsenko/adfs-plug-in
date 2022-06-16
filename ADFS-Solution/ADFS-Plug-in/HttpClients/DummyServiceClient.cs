@@ -5,7 +5,6 @@ namespace ADFS_Plug_in.HttpClients
 {
     internal class DummyServiceClient : IServiceClient
     {
-        private const string url = "https//:dummyservice.com";
         private readonly HttpClient _client;
         private readonly ILogManager _logger;
         public DummyServiceClient(HttpClient httpClient, ILogManager logger)
@@ -18,16 +17,16 @@ namespace ADFS_Plug_in.HttpClients
             bool result = false;
             try
             {
-                var responseString = _client.GetStringAsync(url).GetAwaiter().GetResult();
+                var responseString = _client.GetStringAsync("").GetAwaiter().GetResult();
                 result = JsonConvert.DeserializeObject<bool>(responseString);
             }
             catch(JsonException ex)
             {
-                _logger.LogWarning($"Parsing problems: {ex.Message}");
+                _logger.LogError($"Parsing problems: {ex.Message}");
             }
             catch(Exception ex)
             {
-                _logger.LogWarning($"Unexpected problems: {ex.Message}");
+                _logger.LogError($"Unexpected problems: {ex.Message}");
             }
             return result;
         }

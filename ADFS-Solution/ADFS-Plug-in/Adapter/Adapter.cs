@@ -13,7 +13,7 @@ namespace ADFS_Plug_in
     public class Adapter : IAuthenticationAdapter
     {
         private static AuthPipeline<string, string> pipeline;
-        private static HttpClient _client = new HttpClient();
+        private static HttpClient _client;
         public IAuthenticationAdapterMetadata Metadata
         {
             get { return new Metadata(); }
@@ -32,6 +32,11 @@ namespace ADFS_Plug_in
 
         public void OnAuthenticationPipelineLoad(IAuthenticationMethodConfigData configData)
         {
+            if(_client != null)
+            {
+                 _client = new HttpClient();
+                _client.BaseAddress = new Uri(Metadata.AuthenticationMethods[0]);
+            }
             ILogManager logger = new EventLogLogger();
             var step1 = new ActiveDirectoryCheck();
             var DummyServiceClient = new DummyServiceClient(_client, logger);

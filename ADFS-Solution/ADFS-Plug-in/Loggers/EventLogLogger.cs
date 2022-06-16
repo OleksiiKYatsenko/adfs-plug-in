@@ -1,28 +1,35 @@
 ﻿using ADFS_Plug_in.Interfaces;
 using NLog;
+using Microsoft.Extensions.Logging.EventLog;
+using System.Diagnostics;
 
 namespace ADFS_Plug_in.Loggers
 {
     internal class EventLogLogger : ILogManager
     {
-        private static ILogger logger = LogManager.GetCurrentClassLogger();
-        public void LogDebug(string message)
-        {
-            logger.Debug(message);
-        }
         public void LogError(string message)
         {
-            Logger logger = LogManager.GetLogger("EventLogTarget");
-            var logEventInfo = new LogEventInfo(LogLevel.Error, logger.Name, message);
-            logger.Log(logEventInfo);
+            using (EventLog eventLog = new EventLog("Application"))
+            {
+                eventLog.Source = "Application";
+                eventLog.WriteEntry(message, EventLogEntryType.Error);
+            }
         }
         public void LogInformation(string message)
         {
-            logger.Info(message);
+            using (EventLog eventLog = new EventLog("Application"))
+            {
+                eventLog.Source = "Application";
+                eventLog.WriteEntry(message, EventLogEntryType.Information);
+            }
         }
         public void LogWarning(string message)
         {
-            logger.Warn(message);
+            using (EventLog eventLog = new EventLog("Application"))
+            {
+                eventLog.Source = "Application";
+                eventLog.WriteEntry(message, EventLogEntryType.Warning);
+            }
         }
     }
 }
