@@ -7,8 +7,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ADFS-Plug-in", "ADFS-Plug-i
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ADFS-Plug-in.Tests", "ADFS-Plug-in.Tests\ADFS-Plug-in.Tests.csproj", "{93B41C21-7F02-4EDB-A080-7E650CD7A5E6}"
 EndProject
-Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "ADFS-Plug-In.Installer", "ADFS-Plug-In.Installer\ADFS-Plug-In.Installer.vdproj", "{612342C8-DF5E-4BF6-A0F1-271F4EA12BE7}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -23,8 +21,6 @@ Global
 		{93B41C21-7F02-4EDB-A080-7E650CD7A5E6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{93B41C21-7F02-4EDB-A080-7E650CD7A5E6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{93B41C21-7F02-4EDB-A080-7E650CD7A5E6}.Release|Any CPU.Build.0 = Release|Any CPU
-		{612342C8-DF5E-4BF6-A0F1-271F4EA12BE7}.Debug|Any CPU.ActiveCfg = Debug
-		{612342C8-DF5E-4BF6-A0F1-271F4EA12BE7}.Release|Any CPU.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
