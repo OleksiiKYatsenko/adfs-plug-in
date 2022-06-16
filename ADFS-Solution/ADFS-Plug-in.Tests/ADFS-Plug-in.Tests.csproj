@@ -11,6 +11,8 @@
     <SignAssembly>True</SignAssembly>
 
     <AssemblyOriginatorKeyFile>adfsplugin.publicKey</AssemblyOriginatorKeyFile>
+
+    <DelaySign>True</DelaySign>
   </PropertyGroup>
 
   <ItemGroup>
