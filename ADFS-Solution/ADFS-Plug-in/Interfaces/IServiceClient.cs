@@ -2,6 +2,6 @@
 {
     internal interface IServiceClient
     {
-        Task<bool> GetServiceResponse();
+        bool GetServiceResponse();
     }
 }

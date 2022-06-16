@@ -5,27 +5,25 @@ namespace ADFS_Plug_in.Checkers
 {
     internal class ActiveDirectoryCheck : IChecker
     {
-        public Task<bool> CheckAsync()
+        public string Check(string userName)
         {
             string path = "LDAP://my-ad-server";// it's dummy path to AD server
-            return Task.Run(() =>
+            
+            using (DirectoryEntry directoryRoot = new DirectoryEntry(path))
+            using (DirectorySearcher searcher = new DirectorySearcher(directoryRoot, $"(&(objectClass=User)(samaccountname={userName}))"))
             {
-                using (DirectoryEntry directoryRoot = new DirectoryEntry(path))
-                using (DirectorySearcher searcher = new DirectorySearcher(directoryRoot, $"(&(objectClass=User)(samaccountname={input}))"))
-                {
-                    using (SearchResultCollection results = searcher.FindAll())
-                        foreach (SearchResult result in results)
-                        {
-                            DirectoryEntry de = result.GetDirectoryEntry();
+                using (SearchResultCollection results = searcher.FindAll())
+                    foreach (SearchResult result in results)
+                    {
+                        DirectoryEntry de = result.GetDirectoryEntry();
 
-                            if (!IsActive(de))
-                            {
-                                return Task.FromResult(false);
-                            }
+                        if (!IsActive(de))
+                        {
+                            return string.Empty;
                         }
-                }
-                return Task.FromResult(true);
-            });
+                    }
+            }
+            return userName;
         }
 
         private bool IsActive(DirectoryEntry de)
