@@ -9,26 +9,24 @@ namespace ADFS_Plug_in.Loggers
     {
         public void LogError(string message)
         {
-            using (EventLog eventLog = new EventLog("Application"))
-            {
-                eventLog.Source = "Application";
-                eventLog.WriteEntry(message, EventLogEntryType.Error);
-            }
+            Log(message, EventLogEntryType.Error);
         }
         public void LogInformation(string message)
         {
-            using (EventLog eventLog = new EventLog("Application"))
-            {
-                eventLog.Source = "Application";
-                eventLog.WriteEntry(message, EventLogEntryType.Information);
-            }
+            Log(message, EventLogEntryType.Information);
         }
         public void LogWarning(string message)
+        {
+            Log(message, EventLogEntryType.Warning);
+
+        }
+
+        public void Log(string message, EventLogEntryType type)
         {
             using (EventLog eventLog = new EventLog("Application"))
             {
                 eventLog.Source = "Application";
-                eventLog.WriteEntry(message, EventLogEntryType.Warning);
+                eventLog.WriteEntry(message, type);
             }
         }
     }
